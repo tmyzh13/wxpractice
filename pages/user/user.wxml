@@ -8,7 +8,7 @@
 
   <view class="address-box">
     <view class="address-manage" bindtap="toAddress">
-      地址管理
+      地址管理s
     </view>
   </view>
 </view>
