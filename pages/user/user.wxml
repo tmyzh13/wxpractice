@@ -6,9 +6,12 @@
     <text  class="about">关于我们</text>
   </view>
 
+  <!-- //新增1 -->
   <view class="address-box">
+  <!-- 新增2 -->
     <view class="address-manage" bindtap="toAddress">
       地址管理s
     </view>
+    <!-- 新增三 -->
   </view>
 </view>
