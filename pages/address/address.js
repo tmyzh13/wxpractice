@@ -6,7 +6,9 @@ Page({
    */
   data: {
     address:{
-      
+      name:'',
+      phone:'',
+      detail:''
     }
   },
 
@@ -14,7 +16,37 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var self = this;
 
+    //从缓存中获取
+    wx.getStorage({
+      key: 'address',
+      success: function(res) {
+        self.setData({
+          address:res.data
+        })
+      },
+    })
+  },
+
+  //提交表单
+  formSubmit:function(e){
+    var value = e.detail.value;
+    if(value.name&&value.phone&&value.address){
+      wx.setStorage({
+        key: 'address',
+        data: value,
+        success(){
+          wx.navigateBack();
+        }
+      })
+    } else{
+      wx.showModal({
+        title: '提示',
+        content: '请填写完整资料',
+        showCancel:false
+      })
+    }
   },
 
   /**

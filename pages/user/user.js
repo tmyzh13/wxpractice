@@ -5,7 +5,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    thumb:'',
+    nickname:'',
+    orders:[],
+    hasAddress:false,
+    address:{}
   },
 
   toAddress:function(){
@@ -18,7 +22,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var self=this;
+    //获取用户信息
+    wx.getUserInfo({
+      success:function(res){
+        self.setData({
+          thumb:res.userInfo.avatarUrl,
+          nickname:res.userInfo.nickName
+        })
+      }
+    })
   },
 
   /**
@@ -32,7 +45,19 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var self =this;
+    /**
+     * 获取本地缓存 地址信息
+     */
+    wx.getStorage({
+      key: 'address',
+      success: function(res) {
+        self.setData({
+          hasAddress:true,
+          address:res.data
+        })
+      },
+    })
   },
 
   /**

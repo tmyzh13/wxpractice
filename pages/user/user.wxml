@@ -8,7 +8,12 @@
 
   <view class="address-box">
     <view class="address-manage" bindtap="toAddress">
-      地址管理s
+      地址管理
+    </view>
+    <view wx:if="{{hasAddress}}" class="address-list">
+      <view>{{address.name}}</view>
+      <view>{{address.phone}}</view>
+      <view>{{address.address}}</view>
     </view>
   </view>
 </view>
